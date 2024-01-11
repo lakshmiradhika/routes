@@ -3,6 +3,7 @@ package com.example.routes.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
 
+@Entity
 public class Bus {
 	@Id
     @Column(name = "bus_id")
@@ -26,8 +28,8 @@ public class Bus {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "trip",
-            joinColumns = @JoinColumn(name = "bus_id"),
-            inverseJoinColumns = @JoinColumn(name = "route_id")
+            joinColumns = @JoinColumn(name = "busId"),
+            inverseJoinColumns = @JoinColumn(name = "routeId")
             )
     private Route route ;
 	public String getRegistrationNumber() {
